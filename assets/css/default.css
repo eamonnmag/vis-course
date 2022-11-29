@@ -52,13 +52,13 @@ margin-bottom: 20px;
   transition: color .15s ease; }
 
 .reveal a:not(.image):hover {
-  color: #16a085;
+  color: #6d4aff;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #16a085; }
+  background: #6d4aff; }
 
 /*********************************************
  * IMAGES
@@ -73,7 +73,7 @@ margin-bottom: 20px;
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #13daec;
+  border-color: #6d4aff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************

@@ -1,2 +1,4 @@
-## Data Visualization Workshop Practical
+## Data Visualization Practical
+
+A practical introduction to D3.
 
