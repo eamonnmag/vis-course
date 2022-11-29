@@ -1,0 +1,178 @@
+#graph-view {
+    position: absolute;
+    float: left;
+    left: 40px;
+}
+
+.link {
+    fill: none;
+    stroke: #aaa;
+    opacity: .5;
+    stroke-width: 1px;
+}
+
+circle.dot {
+    fill: white;
+}
+
+.axis text {
+    font-size: 10px;
+    fill: white;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke:white;
+    shape-rendering: crispEdges;
+}
+
+.pull-left {
+    position: relative;
+    float: left;
+}
+
+.pull-right {
+    position: relative;
+    float: right;
+}
+
+.canvas {
+    width: 50%;
+    border-right: 2px #1abc9c solid;
+}
+
+.example-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.explanation {
+    width: 50%;
+    padding: 10px;
+    font-family: "Helvetica Neue", 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    color: white;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.reveal code {
+    font-family: monospace;
+    font-size: .7em;
+}
+
+
+.brush .extent {
+    fill-opacity: .1;
+    stroke: #fff;
+    shape-rendering: crispEdges;
+}
+
+/*parallel coords styles*/
+
+#parallel-coords-canvas svg {
+    font: 10px 'Lato';
+}
+
+#parallel-coords-canvas svg .foreground path {
+    fill: none;
+    stroke: #F15A29;
+    stroke-opacity: .7;
+}
+
+#parallel-coords-canvas svg .brush .extent {
+    fill-opacity: .3;
+    stroke: #fff;
+    shape-rendering: crispEdges;
+}
+
+#parallel-coords-canvas svg .axis line, .axis path {
+    fill: none;
+    stroke: white;
+    shape-rendering: crispEdges;
+}
+
+#parallel-coords-canvas svg .axis text {
+    cursor: move;
+}
+
+/*scatter plot matrix*/
+
+#scatter-matrix-canvas svg .axis {
+    shape-rendering: crispEdges;
+}
+
+#scatter-matrix-canvas svg .axis line {
+    stroke: #ddd;
+    stroke-width: .5px;
+}
+
+#scatter-matrix-canvas svg .axis path {
+    display: none;
+}
+
+#scatter-matrix-canvas svg rect.extent {
+    fill: #2c3e50;
+    fill-opacity: .125;
+    stroke: #fff;
+}
+
+#scatter-matrix-canvas svg rect.frame {
+    fill: #2c3e50;
+    fill-opacity: .7;
+    stroke: #aaa;
+}
+
+#scatter-matrix-canvas svg circle {
+    fill: #ccc;
+    fill-opacity: .8;
+}
+
+#scatter-matrix-canvas svg .legend circle {
+    fill-opacity: 1;
+}
+
+#scatter-matrix-canvas svg .legend text {
+    font-size: 18px;
+    font-style: oblique;
+}
+
+#scatter-matrix-canvas svg .cell text {
+    pointer-events: none;
+}
+
+#scatter-matrix-canvas svg .Patient1 {
+    fill: #1abc9c;
+}
+
+#scatter-matrix-canvas svg .Patient2 {
+    fill: #f39c12;
+}
+
+.Patient3 {
+    fill: #e74c3c;
+}
+
+path.fc.area {
+    fill: #1abc9c;
+}
+
+.hive-axis {
+    stroke: white;
+}
+
+#circle:hover path.fade {
+    opacity: .1;
+}
+
+text.active {
+    fill: 1abc9c;
+}
