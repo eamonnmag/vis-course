@@ -7,7 +7,7 @@
 var d3_chocolates = (function () {
 
     var svg;
-    var margins = {"left": 40, "right": 30, "top": 30, "bottom": 30};
+    var margins = {"left": 30, "right": 0, "top": 20, "bottom": 20};
     var step = 0;
     var width;
     var height;
@@ -31,8 +31,6 @@ var d3_chocolates = (function () {
                 selected[d.name] = d;
             }
             return d.selected ? "#F15D2F" : colors(d.manufacturer);
-
-
         });
 
     };
@@ -50,17 +48,17 @@ var d3_chocolates = (function () {
             .domain(d3.extent(data, function (d) {
                 return d.price;
             }))
-            .range([0, width - margins.left - margins.right]);
+            .range([margins.left, width - margins.left - margins.right]);
         return x;
     };
 
 
     var calculateYScale = function (data, height) {
         var y = d3.scaleLinear()
-            .domain(d3.extent(data, function (d) {
+            .domain([0, d3.max(data, function (d) {
                 return d.rating;
-            }))
-            .range([height - margins.top - margins.bottom, 0]);
+            })])
+            .range([height - margins.top - margins.bottom, margins.bottom]);
         return y;
     };
 
@@ -76,8 +74,8 @@ var d3_chocolates = (function () {
             d3.json("assets/data/chocolate.json").then(function (data) {
                 data = data.chocolates;
 
-                const x = calculateXScale(data, width);
-                const y = calculateYScale(data, height);
+                const x = calculateXScale(data, width- margins.left - margins.right);
+                const y = calculateYScale(data, height - margins.top - margins.bottom);
 
                 const xAxis = d3.axisBottom(x).tickPadding(2);
                 const yAxis = d3.axisLeft(y).tickPadding(2);
@@ -87,7 +85,7 @@ var d3_chocolates = (function () {
                     .attr("width", width)
                     .attr("height", height)
 
-                const gX = svg.append("g").attr("class", "x axis").attr("transform", "translate(20," + y.range()[0] + ")").call(xAxis);
+                const gX = svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0] + ")").call(xAxis);
                 const gY = svg.append("g").attr("class", "y axis").attr("transform", "translate(20,0)").call(yAxis);
                     
                 let g = svg.append("g")
@@ -115,13 +113,11 @@ var d3_chocolates = (function () {
                         .attr('fill', 'rgba(1,1,1,0)');
                 }
 
-                
-
                 g.append("text")
                     .attr("fill", "#414241")
                     .attr("text-anchor", "end")
-                    .attr("x", width / 2)
-                    .attr("y", height - 35)
+                    .attr("x", (width - margins.right - margins.left) / 2)
+                    .attr("y", height - margins.top - margins.bottom)
                     .text("Price in pence (£)");
 
                 var chocolate = g.selectAll("g.chocolatenode").data(data, function (d) {
@@ -152,19 +148,22 @@ var d3_chocolates = (function () {
 
                 if (brushingOn) {
                     brush = d3.brush()
-                        .x(x)
-                        .y(y)
-                        .on("brushstart", function () {
+                        .on("start", function (e) {
                             console.log("Resetting selected var");
+                            console.log(e.selection);
+                            g.selectAll("g.chocolatenode").select('circle').style('fill', (d) => {
+                                return colors(d.manufacturer);
+                            })
                             selected = {};
                         })
-                        .on("brush", function () {
-
-                            var extent = brush.extent();
-                            g.selectAll("g.chocolatenode").select("circle").style("fill", function (d) {
-                                d.selected = (d.x > x(extent[0][0]) && d.x < x(extent[1][0]))
-                                    && (d.y < y(extent[0][1]) && d.y > y(extent[1][1]));
-
+                        .on("brush", function (e) {
+                            var extent = e.selection;
+                            g.selectAll("g.chocolatenode").select('circle').style("fill", function (d) {
+                                let adjustedX = d.x + margins.left;
+                                let adjustedY = d.y + margins.top;
+                                d.selected = (adjustedX >= extent[0][0] && adjustedX <= extent[1][0])
+                                    && (adjustedY >= extent[0][1] && adjustedY <= extent[1][1]);
+                                
                                 if (d.selected) {
                                     selected[d.name] = d;
                                 }
@@ -172,7 +171,7 @@ var d3_chocolates = (function () {
                             });
 
                         })
-                        .on("brushend", function () {
+                        .on("end", function () {
                             if (addLinking) {
                                 d3_chocolates.plot_detailed(placement, selected, 300, 60);
                             }
@@ -200,14 +199,14 @@ var d3_chocolates = (function () {
 
         plot_detailed: function (placement, selection, width, height) {
             d3.selectAll(".link_detail_plot").remove();
-            for (var selected_idx in selection) {
-
-                var svg = d3.select(placement).append("svg").attr({
-                    "width": width + 30,
-                    "height": height + 20,
-                    "id": "detail-" + selected_idx,
-                    "class": "link_detail_plot"
-                }).append("g").attr('transform', 'translate(20,0)');
+            Object.keys(selection).forEach((key) => {
+                
+                var svg = d3.select(placement).append("svg")
+                    .attr('width', width + 30)
+                    .attr('height', height + 30)
+                    .attr('id', "detail-" + selection)
+                    .attr('class', 'link_detail_plot')
+                    .append("g").attr('transform', 'translate(20,20)');
 
 
                 var dataset = [];
@@ -228,7 +227,7 @@ var d3_chocolates = (function () {
                     })])
                     .range([height, 0]);
 
-                svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selection[selected_idx].manufacturer)).attr('x', 0).transition().attr('height', function (d, i) {
+                svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selection[key].manufacturer)).attr('x', 0).transition().attr('height', function (d, i) {
                     return height - y(d.y);
                 }).attr('width', 10).attr('x', function (d, i) {
                     return x(d.x);
@@ -236,14 +235,10 @@ var d3_chocolates = (function () {
                     return y(d.y)
                 });
 
-                var xAxis = d3.svg.axis()
-                    .scale(x)
-                    .orient("bottom")
+                var xAxis = d3.axisBottom(x)
                     .tickPadding(4);
 
-                var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left")
+                var yAxis = d3.axisLeft(y)
                     .tickPadding(2).ticks(3);
 
                 svg.append("g")
@@ -255,9 +250,13 @@ var d3_chocolates = (function () {
                     .attr("class", "y axis")
                     .call(yAxis);
 
-                svg.append("text").text(selected_idx).attr({'x': 5, y: 10})
+                svg.append("text").text(key).style('fill', 'white').attr({'x': 5, y: 5})
+            })
+            
 
-            }
+                
+
+            
         },
 
         animateScatterPlot: function (placement, w, h) {

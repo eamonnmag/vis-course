@@ -68,7 +68,8 @@
                     </div>
                     <div>Eamonn Maguire
 
-                        <p style="font-size: .7em">Tweet @antarticdesign | GitHub @eamonnmag | Slack @eamonn</p>
+                        <p style="font-size: .7em">Tweet @antarticdesign | GitHub @eamonnmag | eamonn[at]protonmail.ch
+                        </p>
                         <p class="text-small">Slides and all code from here -
                             https://github.com/eamonnmag/vis-course-practical</p>
                     </div>
@@ -695,7 +696,9 @@ svg.append("rect")
                 <section id="letsdraw-lines">
                     <h3>Lines</h3>
 
-                    <p style="font-size: .8em;">See the full list at <a href="https://github.com/d3/d3-shape/blob/main/README.md#curves" target="_new">D3 Wiki | Curves</a></p>
+                    <p style="font-size: .8em;">See the full list at <a
+                            href="https://github.com/d3/d3-shape/blob/main/README.md#curves" target="_new">D3 Wiki |
+                            Curves</a></p>
 
                     <ul style="font-size: 16px; list-style: none" class="pull-left">
                         <li>linear
@@ -1010,7 +1013,8 @@ svg.selectAll("circle")
 
                     <p class="text-small">Create a function to load in data from an array, and display circles to
                         represent each point.</p>
-                    <p class="text-small"><span style="color: #f0932b">Bonus Point</span> - Allow for updates to the displayed data (pass in a new array).</p>
+                    <p class="text-small"><span style="color: #f0932b">Bonus Point</span> - Allow for updates to the
+                        displayed data (pass in a new array).</p>
 
                     <!--<br/>-->
                     <!--Tip-->
@@ -1072,8 +1076,7 @@ myScale.invert(); // for a value in the range, outputs the equivalent domain val
                     <ol style="list-style: none">
                         <li>Quantize
                             <p class="text-small">Much like linear scales but with a discrete range (see <a
-                                    href="https://github.com/d3/d3-scale#quantile-scales"
-                                    target="_blank">here
+                                    href="https://github.com/d3/d3-scale#quantile-scales" target="_blank">here
                                     for details</a>).</p>
                             <pre><code>var myScale = d3.scaleQuantize().domain([0, 1]).range(['b', 'i', 'o', 'v', 'i', 's']);
 myScale('0'); // will output 'b'
@@ -1084,8 +1087,7 @@ myScale.invertExtent('s'); // returns [0.8333, 1]
 
                         <li>Quantile
                             <p class="text-small">Same as quantize, but input domain is assumed to be discrete (see <a
-                                    href="https://github.com/d3/d3-scale#quantile-scales"
-                                    target="_blank">here
+                                    href="https://github.com/d3/d3-scale#quantile-scales" target="_blank">here
                                     for details</a>).</p>
                             <pre><code>var myScale = d3.scaleQuantile().domain([0, 1]).range(['b', 'i', 'o', 'v', 'i', 's']);
     myScale('0'); // will output 'b'
@@ -1116,7 +1118,8 @@ myScale.invertExtent('a'); // returns [undefined, 0]
                                 for details</a>)
 
                             <ol style="margin-left: 90px">
-                                <li>e.g. colors d3.scaleOrdinal(d3.schemeCategory10) creates a scale mapping Strings etc. to a colour
+                                <li>e.g. colors d3.scaleOrdinal(d3.schemeCategory10) creates a scale mapping Strings
+                                    etc. to a colour
                                     e.g.
                                     <pre><code>var colors = d3.scaleOrdinal(d3.schemeCategory10);
 var colourForMe = colors("Visual Analytics"); // will output </code></pre>
@@ -1399,7 +1402,8 @@ d3.json("assets/data/chocolate.json").then(function (data) {
     });</code></pre>
                     <div id="mouse-event-plot" style="height: 400px"></div>
 
-                    <p class="text-small">See <a href="http://jsfiddle.net/eamonnmag/Q567s/" target="_blank">here</a> for example source
+                    <p class="text-small">See <a href="http://jsfiddle.net/eamonnmag/Q567s/" target="_blank">here</a>
+                        for example source
                         code
                     </p>
                 </section>
@@ -1459,7 +1463,7 @@ var zoom = d3.zoom().on("zoom", handleZoom);
                 <section id="zooming-example-1">
                     <p>Zoooommmm...</p>
                     <div id="zooming-1" style="height: 400px"></div>
-                    
+
                 </section>
 
                 <section id="exercise-7">
@@ -1565,7 +1569,7 @@ var zoom = d3.zoom().on("zoom", handleZoom);
 
                 </section>
 
-                
+
 
             </section>
 
@@ -1623,17 +1627,17 @@ var zoom = d3.zoom().on("zoom", handleZoom);
 
                     <p>There are a number of layouts that D3 gives you for free.</p>
                     <ul>
-                        <li><a href="https://github.com/mbostock/d3/wiki/Force-Layout" target="_blank">Force directed
+                        <li><a href="https://github.com/d3/d3-force/blob/v3.0.0/README.md#forceSimulation" target="_blank">Force directed
                                 layout</a>: this is what you've seen so far. Nodes have resistance to other nodes
                             calculated based on the weight on the link and 'charge'.</li>
-                        <li><a href="https://github.com/mbostock/d3/wiki/Cluster-Layout" target="_blank">Cluster</a>:
+                        <li><a href="https://github.com/d3/d3-hierarchy/blob/v3.1.2/README.md#cluster" target="_blank">Cluster</a>:
                             for dendrogram layouts.</li>
-                        <li><a href="https://github.com/mbostock/d3/wiki/Tree-Layout" target="_blank">Tree</a>: for nice
+                        <li><a href="https://github.com/d3/d3-hierarchy/blob/v3.1.2/README.md#tree" target="_blank">Tree</a>: for nice
                             tree layouts.</li>
-                        <li><a href="https://github.com/mbostock/d3/wiki/Treemap-Layout" target="_blank">Treemap</a>:
+                        <li><a href="https://github.com/d3/d3-hierarchy/blob/v3.1.2/README.md#treemap" target="_blank">Treemap</a>:
                             recursive partitioning of a space to match the tree layout with space filled by the value of
                             sub nodes.</li>
-                        <li><a href="https://github.com/mbostock/d3/wiki/Pack-Layout" target="_blank">Pack</a>: for
+                        <li><a href="https://github.com/d3/d3-hierarchy/blob/v3.1.2/README.md#pack" target="_blank">Pack</a>: for
                             sunburst style layouts.</li>
                     </ul>
                 </section>
@@ -1677,25 +1681,19 @@ var zoom = d3.zoom().on("zoom", handleZoom);
                     <div id="link-example" class="canvas pull-left"></div>
                     <div class="explanation pull-right">
                         <pre><code data-trim style="max-height: 100%; overflow: auto">...
-.on("brushend", function () {
-    if (addLinking) {
-        plot_detailed(placement, selected, 300, 60);
-    }
+.on("end", function () {
+    plot_detailed(placement, selected, 300, 60);
 });</code></pre>
 
                         <pre><code data-trim style="max-height: 400px; overflow: auto">plot_detailed: function (placement, selection, width, height) {
     d3.selectAll(".link_detail_plot").remove();
-    for (var selected_idx in selection) {
-
+    Object.keys(selection).forEach((key) => {
         var svg = d3.select(placement).append("svg")
-            .attr({
-                "width": width+30,
-                "height": height+20,
-                "id": "detail-" + selected_idx,
-                "class": "link_detail_plot"
-            })
-            .append("g")
-            .attr('transform', 'translate(20,0)');
+                .attr('width', width + 30)
+                .attr('height', height + 30)
+                .attr('id', "detail-" + selection)
+                .attr('class', 'link_detail_plot')
+                .append("g").attr('transform', 'translate(20,20)');
 
         // let's generate some random data.
         var dataset = [];
@@ -1720,7 +1718,7 @@ var zoom = d3.zoom().on("zoom", handleZoom);
         .range([height, 0]);
 
         // now add all our bars...
-        svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selected_idx)).attr('x', 0).transition().attr('height', function (d, i) {
+        svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selection)).attr('x', 0).transition().attr('height', function (d, i) {
             return height - yScale(d.y);
         }).attr('width', 10).attr('x', function (d, i) {
             return xScale(d.x);
@@ -1728,11 +1726,9 @@ var zoom = d3.zoom().on("zoom", handleZoom);
             return yScale(d.y)
         });
 
-    // axes etc...removed for clarity
+    svg.append("text").text(selection).attr({'x':5, y: 10})
 
-    svg.append("text").text(selected_idx).attr({'x':5, y: 10})
-
-    }
+    })
 }
 </code></pre>
                     </div>
@@ -1753,90 +1749,56 @@ var zoom = d3.zoom().on("zoom", handleZoom);
                 </section>
             </section>
 
-
-            <section id="animation">
-                <section id="animation-title">
-                    <h3>Animation</h3>
-
-                    <p>Make things dance...</p>
-                </section>
-
-                <section>
-                    <p>D3 has a great framework for animation and does a lot of work for you. </p>
-
-                    <p>The patterns shown here generalisable to lots of other use cases...</p>
-                </section>
-
-                <section id="final-scatter">
-
-                    <h3>A nice animation of updating data...</h3>
-
-                    <div id="dot-plot-animated" class="canvas pull-left" style="height: 600px">
-                    </div>
-                    <div class="explanation pull-right" style="font-size: .8em; text-align: left">
-                        See <a href="http://jsfiddle.net/eamonnmag/47TtN/" target="_blank">here</a> for the
-                        full example with all code.
-                    </div>
-                </section>
-
-                <section id="animation-how">
-                    <h3>How do we do it?</h3>
-
-                    <p>Transitions... we move from one state to another. e.g. position, color, size</p>
-                    <pre><code>function changeAttribute(selector, attribute, x) {
-    d3.select(selector).transition().duration(100).delay(500).ease("elastic").attr(attribute, x);
-    }
-
-    function changeStyle(selector, styleType, color) {
-    d3.select(selector).transition().duration(100).delay(500).ease("linear").style(styleType, color);
-    }</code></pre>
-                    <p>You can see these, as always <a href="http://jsfiddle.net/eamonnmag/KWe65/"
-                            target="_blank">here</a>
-                    </p>
-                </section>
-
-                <section id="dancing-pixels">
-                    <h3>Some fun with animations</h3>
-
-                </section>
-
-            </section>
-
-
-
-
             <section>
-                <p style="text-align: left" class="text-small">
-                    There are a huge number of examples online. Check them out. The best way to learn about D3 is to
-                    play with it.
-                </p>
+                <section>
+                    <p style="text-align: left">
+                        That's the Fundamentals covered on D3.
+                    </p>
 
-                <p class="text-small">
-                    <a href="https://observablehq.com/@d3/gallery" target="_blank">Observable with D3.js</a>
-                </p>
+                    <p style="text-align: left" class="text-small">There are obviously more complex things such as polar
+                        layouts, and maps which are beyond a 90 minute introduction, but this is a starting point. </p>
+                </section>
+                <section>
+                    <p style="text-align: left" class="text-small">
+                        There are a huge number of examples online. Check them out. The best way to learn about D3 is to
+                        play with it.
+                    </p>
 
-                <div align="center">
-                    <img src="assets/img/d3-screenshot.png" style="background: none; border: none; box-shadow: none">
-                </div>
-            </section>
+                    <p class="text-small">
+                        <a href="https://observablehq.com/@d3/gallery" target="_blank">Observable with D3.js</a>
+                    </p>
 
-            <section id="resources">
-                <h3>Further Reading</h3>
+                    <div align="center">
+                        <img src="assets/img/d3-screenshot.png"
+                            style="background: none; border: none; box-shadow: none">
+                    </div>
+                </section>
 
-                <div style="text-align: left; font-size: .7em">
-                    <ul>
-                        <li>Helder de Rocha, <i>Learn D3.js: Create interactive data-driven visualizations for the web with the D3.js library</i>, Packt 2019</li>
-                        <li>Scott Murray, <i>Interactive Data Visualization for the Web: An Introduction to Designing with D3</i>, O'Reilly 2017</li>
-                        <li>Philip Janert, <i>D3 for the Impatient: Interactive Graphics for Programmers and Scientists</i>, O'Reilly 2019</li>
-                        <li>Claus Wilke, <i><a href="https://clauswilke.com/dataviz/" target="_blank">Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures</a></i>, O'Reilly 2019</li>
-                    </ul>
-                    <p>Also check out the following links...</p>
-                    <ul>
-                        
-                        <li>D3 Wiki (<a href="https://github.com/d3/d3/wiki/" target="_blank">https://github.com/d3/d3/wiki/</a>)</li>
-                        <li><a href="https://observablehq.com/" target="_blank">Observable</a></li>
-                    </ul>
-                </div>
+                <section id="resources">
+                    <h3>Further Reading</h3>
+
+                    <div style="text-align: left; font-size: .7em">
+                        <ul>
+                            <li>Helder de Rocha, <i>Learn D3.js: Create interactive data-driven visualizations for the
+                                    web with the D3.js library</i>, Packt 2019</li>
+                            <li>Scott Murray, <i>Interactive Data Visualization for the Web: An Introduction to
+                                    Designing with D3</i>, O'Reilly 2017</li>
+                            <li>Philip Janert, <i>D3 for the Impatient: Interactive Graphics for Programmers and
+                                    Scientists</i>, O'Reilly 2019</li>
+                            <li>Claus Wilke, <i><a href="https://clauswilke.com/dataviz/" target="_blank">Fundamentals
+                                        of Data Visualization: A Primer on Making Informative and Compelling
+                                        Figures</a></i>, O'Reilly 2019</li>
+                        </ul>
+                        <p>Also check out the following links...</p>
+                        <ul>
+
+                            <li>D3 Wiki (<a href="https://github.com/d3/d3/wiki/"
+                                    target="_blank">https://github.com/d3/d3/wiki/</a>)</li>
+                            <li><a href="https://observablehq.com/" target="_blank">Observable</a></li>
+                        </ul>
+                    </div>
+                </section>
+
             </section>
 
             <section id="advice">
@@ -1882,13 +1844,15 @@ var zoom = d3.zoom().on("zoom", handleZoom);
                     <p>The next step is creating your own visualizations with D3.js starting with the concepts
                         you've learnt today.
                     </p>
-                    <br/>
-                    
-                    <p>We will have a short sprint of 2 weeks where you can all go off and visualize your own data for work or personal projects.</p>
-                    <br/>
+                    <br />
+
+                    <p>We will have a short sprint of 2 weeks where you can all go off and visualize your own data for
+                        work or personal projects.</p>
+                    <br />
                     <p>I'm here to help over those 2 weeks and you can ask anything - I will try to help :) </p>
-                    <br/>
-                    <p>At the end of the two weeks we'll have a show and tell with everyone's (those who wish to particate) projects'</p>
+                    <br />
+                    <p>At the end of the two weeks we'll have a show and tell with everyone's (those who wish to
+                        particate) projects'</p>
 
                 </div>
             </section>
@@ -1901,7 +1865,7 @@ var zoom = d3.zoom().on("zoom", handleZoom);
     <script src="assets/js/lib/jquery-2.1.3.min.js"></script>
     <script src="assets/js/lib/head.min.js"></script>
     <script src="assets/js/lib/reveal.min.js"></script>
-    <!-- <script src="assets/js/lib/d3.v3.js"></script> -->
+
     <script src="assets/js/d3-basic-plots.js"></script>
     <script src="assets/js/d3-chocolates.js"></script>
     <script src="assets/js/enter_update.js"></script>
@@ -1982,7 +1946,7 @@ var zoom = d3.zoom().on("zoom", handleZoom);
             "brushing-fcarea": function () { area_chart.createFCAreaChart("#fc-area", 800, 400, { 'scale': d3.scaleLinear(), 'context': true, 'zoom': false }); },
             "parcoords": function () {
                 d3.select("#parallel-coords-canvas").html("");
-                parallel_coordinates.loadAndDraw("#parallel-coords-canvas", 
+                parallel_coordinates.loadAndDraw("#parallel-coords-canvas",
                     ["assets/data/patients-1.csv"], 900, 300, ["patient"],
                     { "colorGroup": "patient", "colors": d3.scaleOrdinal().range(["#1abc9c", "#f39c12", "#e67e22", "#ccc"]) });
             },
@@ -2004,7 +1968,7 @@ var zoom = d3.zoom().on("zoom", handleZoom);
             "linking_visualizations_plot": function () {
                 d3_chocolates.loadAndDisplay("#link-example", 400, 300, true, false, false, true, true);
             },
-            
+
             "final-scatter": function () {
                 d3_chocolates.animateScatterPlot("#dot-plot-animated", 500, 400);
 
